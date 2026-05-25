@@ -30,8 +30,3 @@ This is our custom-built autonomous car for the WRO 2025 Future Engineers compet
 - M2 and M3 screws, nuts, washers
 
 ---
-
-Let me know what you think! The 3D model files are in the `/3D-models` folder, electrical schematics in `/electrical-schematics`, and all source code in `/src`. Feel free to fork and adapt for your own autonomous vehicle build.
-
-**GitHub:** https://github.com/andreipopescufilimon/WRO2025_Future_Engineers  
-**Sponsored by:** HyperLine Robotics
