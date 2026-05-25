@@ -1,4 +1,4 @@
-Summary
+# Summary
 This is a fully autonomous WRO 2026 Future Engineers robot designed from scratch by [TEAM NAME] from [CITY], Romania. It features a parallelogram steering system, runs on a Pololu 30:1 HPCB micro gearmotor through a sealed RC differential, and is controlled by an Arduino Nano ESP32. The robot navigates a randomized track, detects and avoids colored traffic sign cubes in real time using an OpenMV H7 camera, maintains heading using a BMI088 IMU with gyro PID, and executes a precise 3-maneuver parallel parking sequence after completing three full laps.
 
 Robotics & Automation > Autonomous Vehicles
@@ -6,6 +6,7 @@ Robotics & Automation > Autonomous Vehicles
 Tags: wro2026 esp32 autonomous parallel-parking pcb-chassis computer-vision rc-differential servo-steering openmv imu downforce pid encoder-odometry jlcpcb
 
 
+# 
 [TEAM NAME]
 WRO 2026 Future Engineers Robot
 updated [DATE] | published [DATE]
@@ -14,7 +15,7 @@ updated [DATE] | published [DATE]
 ---
 
 
-The Team
+# The Team
 
 [YOUR NAME] (Left)
 Age: [AGE]
@@ -22,7 +23,7 @@ High School: [YOUR SCHOOL]
 
 Hi! I'm [NAME] from Romania, and this is my [X]th WRO season. This is my [X]th season in Future Engineers. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years I have worked on multiple robotics projects including line followers, sumo bots, and air quality modules. Apart from robotics I also enjoy cybersecurity, programming, and cycling.
 
-[TEAMMATE NAME] (Right)
+# [TEAMMATE NAME] (Right)
 Age: [AGE]
 High School: [SCHOOL]
 
@@ -32,7 +33,7 @@ Hi! I'm [NAME] from Romania, and this is my [X]th WRO season competing alongside
 ---
 
 
-Challenge Overview
+# Challenge Overview
 
 The WRO 2026 Future Engineers challenge pushes teams to develop a fully autonomous vehicle capable of navigating a dynamic and randomized racetrack using sensors, computer vision, and advanced control algorithms. The goal is to complete multiple laps while adapting to randomized obstacles, following strict driving rules, and successfully executing a parallel parking maneuver at the end of the course.
 
@@ -46,7 +47,7 @@ Scoring is based on accuracy, technical documentation, and speed, rewarding team
 ---
 
 
-The Robot
+# The Robot
 
 The robot is built around a custom PCB chassis manufactured by JLCPCB, which serves simultaneously as the structural frame and the electronics mainboard. This design eliminates the need for a separate electronics board, reduces total weight, and ensures clean and reliable wiring throughout. The drivetrain uses a sealed RC differential at the rear driven by a Pololu 30:1 HPCB micro gearmotor through a 3D-printed pinion gear. The motor is held in a 3D-printed support with the Li-Po battery mounted directly above it, keeping the center of mass low and centered. At the front, fully 3D-printed wheel hubs each run on two bearings (inner and outer) for a rigid wobble-free axle. A downforce impeller (1020 coreless motor) pulls air from underneath the robot, increasing grip on all four wheels without adding mass.
 
@@ -74,7 +75,7 @@ Various M3 screws, nylon locking nuts, and washers
 ---
 
 
-Mobility Management
+# Mobility Management
 
 Drivetrain
 
