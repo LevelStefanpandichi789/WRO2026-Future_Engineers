@@ -1,5 +1,5 @@
 # Summary
-This is a fully autonomous WRO 2026 Future Engineers robot designed from scratch by [TEAM NAME] from [CITY], Romania. It features a parallelogram steering system, runs on a Pololu 30:1 HPCB micro gearmotor through a sealed RC differential, and is controlled by an Arduino Nano ESP32. The robot navigates a randomized track, detects and avoids colored traffic sign cubes in real time using an OpenMV H7 camera, maintains heading using a BMI088 IMU with gyro PID, and executes a precise 3-maneuver parallel parking sequence after completing three full laps.
+This is a fully autonomous WRO 2026 Future Engineers robot designed from scratch by Precision Parking from Constana, Romania. It features a parallelogram steering system, runs on a Pololu 30:1 HPCB micro gearmotor through a sealed RC differential, and is controlled by an Arduino Nano ESP32. The robot navigates a randomized track, detects and avoids colored traffic sign cubes in real time using an OpenMV H7 camera, maintains heading using a BMI088 IMU with gyro PID, and executes a precise 3-maneuver parallel parking sequence after completing three full laps.
 
 Robotics & Automation > Autonomous Vehicles
 
@@ -7,7 +7,7 @@ Tags: wro2026 esp32 autonomous parallel-parking pcb-chassis computer-vision rc-d
 
 
 # 
-[TEAM NAME]
+Precision Parking
 WRO 2026 Future Engineers Robot
 updated [DATE] | published [DATE]
 
@@ -17,17 +17,17 @@ updated [DATE] | published [DATE]
 
 # The Team
 
-[YOUR NAME] (Left)
-Age: [AGE]
-High School: [YOUR SCHOOL]
+[Stefan Pandichi
+Age: 17
+High School: Colegiul National Pedagogic "Constantin Bratescu"
 
-Hi! I'm [NAME] from Romania, and this is my [X]th WRO season. This is my [X]th season in Future Engineers. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years I have worked on multiple robotics projects including line followers, sumo bots, and air quality modules. Apart from robotics I also enjoy cybersecurity, programming, and cycling.
+Hi! I'm Stefan Pandichi from Romania, and this is my first WRO season. This is my first season in Future Engineers. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years I have worked on multiple robotics projects including line followers, sumo bots, and air quality modules. Apart from robotics I also enjoy cybersecurity, programming, and cycling.
 
-# [TEAMMATE NAME] (Right)
-Age: [AGE]
-High School: [SCHOOL]
+# Olteanu-Mihail Horatiu-Anton
+Age: 15
+High School: Colegiul National "Mihai Eminescu"
 
-Hi! I'm [NAME] from Romania, and this is my [X]th WRO season competing alongside [PARTNER]. I have participated in RoboMission multiple times, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
+Hi! I'm Olteanu-Mihail Horatiu-Anton from Romania, and this is my 1st WRO season competing alongside Stefan Pandichi. I have participated in RoboMission multiple times, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
 
 
 ---
