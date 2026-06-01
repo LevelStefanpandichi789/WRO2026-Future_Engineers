@@ -17,7 +17,7 @@ updated [DATE] | published [DATE]
 
 # The Team
 
-[Stefan Pandichi
+# Stefan Pandichi
 Age: 17
 High School: Colegiul National Pedagogic "Constantin Bratescu"
 
