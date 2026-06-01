@@ -9,7 +9,7 @@ Tags: wro2026 esp32 autonomous parallel-parking pcb-chassis computer-vision rc-d
 # 
 Precision Parking
 WRO 2026 Future Engineers Robot
-updated [DATE] | published [DATE]
+updated 01/06/2026 | published xx/xx/xx
 
 
 ---
@@ -21,13 +21,13 @@ updated [DATE] | published [DATE]
 Age: 17
 High School: Colegiul National Pedagogic "Constantin Bratescu"
 
-Hi! I'm Stefan Pandichi from Romania, and this is my first WRO season. This is my first season in Future Engineers. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years I have worked on multiple robotics projects including line followers, sumo bots, and air quality modules. Apart from robotics I also enjoy cybersecurity, programming, and cycling.
+Hi! I'm Stefan Pandichi from Romania, and this is my first WRO season. This is my first season in Future Engineers. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years I have worked on my coding abilities to prepare myself for future projects and/or robots. Apart from robotics I also enjoy cybersecurity, programming, and cycling.
 
 # Olteanu-Mihail Horatiu-Anton
 Age: 15
 High School: Colegiul National "Mihai Eminescu"
 
-Hi! I'm Olteanu-Mihail Horatiu-Anton from Romania, and this is my 1st WRO season competing alongside Stefan Pandichi. I have participated in RoboMission multiple times, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
+Hi! I'm Olteanu-Mihail Horatiu-Anton from Romania, and this is my 1st WRO season competing alongside Stefan Pandichi. I am very compassionate about building and composing the robot itself whilst having a strong interest in technology and robotics and I'm always eager to learn and experiment with new ideas.
 
 
 ---
