@@ -30,36 +30,22 @@ This repository is organized as follows:
 
 ## 👥 The Team <a id="the-team"></a>
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/42d6e5a1cd52bcbd6b493d360703382f0b427a0a/media/team-photos/team.jpeg" width="450">
+### **Pandichi Stefan** 
+**Age:** 17 <br>
 
-### **Popescu Filimon Andrei Cosmin** (middle)
-**Age:** 18 <br>
-
-**High School:** International Computer High School Bucharest (ICHB)  
+**High School:** Colegiul National Pedagogic "Constantin Bratescu" (CNPCB)  
 
 **Description:**  
-Hi! I’m Andrei from Romania, and this is my sixth WRO season. This is my second season in Future Engineers, as before I competed in the Robomission category. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years, I have worked on multiple robotics projects, including line followers, sumo bots, and air quality modules. I am the founder of HyperLine Robotics Team, where I build and develop advanced robotics projects with my team. Apart from robotics, I also enjoy cybersecurity, programming, and cycling.
+Hi! I’m Stefan from Romania, and this is my first WRO season. I am passionate about robotics, especially electronics and the latest algorithms and tech. Over the years, I have worked on multiple robotics projects, including FPV cars, and air quality modules. I am the founder of the Precision Parking Team, where I build and develop advanced robotics projects with my team. Apart from robotics, I also enjoy video games, programming, and cycling.
 
 ---
 
-### **Horia Simion** (left)
+### **Horia Simion** 
 **Age:** 17 <br>
 **High School:** National College "Mihai Viteazul" (CNMV)
 
 **Description:**  
 Hi! I’m Horia from Romania, and this is my third WRO season competing alongside Andrei. I have participated in RoboMission multiple times, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
-
----
-
-### **Eduard Alexandru Vasile** (right)
-**Age:** 16 <br>
-**High School:** Liceul Teoretic Alexandru Ioan Cuza
-
-**Description:**  
-Hi! I’m Eduard from Romania. I’m passionate about robotics, especially building and testing competitive robots. I have worked on sumo robots, and recently I started developing line follower robots as well. I also enjoy driving and flight simulators, where I like exploring realistic control, precision, and performance.
-
-Apart from robotics, I love MTB, video games, and cybersecurity. I’m always interested in learning new technologies, improving my skills, and working on projects that challenge me both technically and creatively.
-
 
 ---
 
