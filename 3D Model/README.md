@@ -13,9 +13,6 @@ This folder contains 3D design files for the robot's components. These files inc
 - `RCcar_7.stl`: Structural support used to mount the impeller motor and maintain stable airflow underneath the robot.
 - `RCcar_8.stl`: Lightweight impeller fan designed to generate aerodynamic downforce for increased traction.
 
-### Archive
-- `old-3D-models/`: Contains earlier versions of the robot's 3D models for reference.
-
 ## Usage
 - Download the `.stl` or `.step`(if available) files to fabricate the components using a 3D printer or CNC machine.
 - Ensure the parts are assembled according to the robot's full assembled design.
