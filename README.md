@@ -87,29 +87,16 @@ Scoring is based on **accuracy, technical documentation and speed**, rewarding t
 
 
 Robot Specifications:
-| Parameter | Value |
-|---|---|
-| Robot Length | ~145 mm |
-| Robot Width | ~65 mm |
-| Robot Height | ~55 mm |
-| Total Weight | ~200 g |
-| Wheelbase | ~65 mm |
-| Ground Clearance | ~6 mm |
-| Main Controller | Arduino Nano ESP32 |
-| Vision System | OpenMV RT1062 |
-| Drive System | Rear differential drive |
-| Steering System | Parallel steering |
-| Drive Motor | Pololu 30:1 HPCB Gearmotor |
-| Steering Servo | MG90S |
-| Downforce System | 10000KV BLDC Impeller |
-| Battery | 2S Li-Po 300mAh |
-| Maximum Stable Speed | ~3 m/s |
-| Camera Processing Speed | ~40 FPS |
-| Maximum Steering Angle | ~85° |
-| Peak Current Consumption | ~7 A |
-| Communication Protocols | UART, I2C, PWM |
-| Chassis Type | Custom PCB chassis |
-| Wheel Material | Cast silicone tires |
+Required Parts|
+-Required Parts
+・Raspberry Pi 5
+・Arduino nano
+・HC-05
+・TTmotor(3~6V)
+・wheel × 4
+・L298N
+・SG90
+・9Vbattery
 
 The robot was designed to prioritize stability, fast steering response, and compact packaging. A lightweight PCB chassis combined with silicone tires and an active downforce system allows the robot to maintain traction and consistency during high-speed autonomous runs.
 
@@ -1697,87 +1684,6 @@ During testing, several failure cases were identified and handled in software. T
 ## 📽️ Performance Video <a id="performance-video"></a>
 
 🔗 **[Click here to watch the video on YouTube](https://youtu.be/54tYACWeeq0)** 
-
----
-
-## 💰 Cost Analysis <a id="cost-analysis"></a>
-
-We optimized the robot for a balance between **high performance, reliability, and cost efficiency**. The total cost includes electronics, motors, sensors, PCB manufacturing, 3D printed parts, and mechanical hardware used during both development and the final competition-ready version.
-
-### 📦 **Components Costs** <a id="components-costs"></a>
-
-**Note:** Many of the components used in this project were provided through sponsorships and partnerships. The prices listed above represent the standard market prices without sponsor discounts, in order to reflect the real estimated value of the robot.
-> 
-| Component | Quantity | Unit Price ($) | Total ($) |
-|---------------------------------------------|----------|----------------|-------------|
-| Arduino Nano ESP32 | 1 | 21.42 | 21.42 |
-| Drive Motor 6V (30:1 HPCB) | 1 | 22.45 | 22.45 |
-| IFX9201SG Motor Driver | 1 | 4.62 | 4.62 |
-| Steering Servo (MG90S) | 1 | 4.05 | 4.05 |
-| OpenMV RT1062 Camera | 1 | 80.00 | 140.00 |
-| Gyroscope (BMI088) | 1 | 8.50 | 8.50 |
-| Pololu Distance Sensor | 4 | 17.95 | 71.80 |
-| LiPo Battery (2S 300mAh) | 1 | 5.60 | 5.60 |
-| D24V50F5 Voltage Regulator | 1 | 29.95 | 29.95 |
-| Custom Silicone Wheels | 4 | 9.24 | 36.96 |
-| RC Differential | 1 | 19.00 | 19.00 |
-| Experimental Parts | - | 35.00 | 35.00 |
-| **TOTAL COMPONENT COST** | - | **-** | **363.35** |
-
-### 🧪 Experimental Parts & Development Iterations
-
-During development, multiple experimental parts and prototype versions were tested before reaching the final design. These included:
-- Different wheel compounds and tire designs
-- Alternative PCB revisions
-- Various motor ratios and steering geometries
-- Prototype chassis parts and sensor mounts
-
-These parts were mainly used for testing and optimization and are not included in the final competition robot cost.
-
----
-
-### **🔌 PCB Cost (Manufactured via JLCPCB)** <a id="pcb-cost"></a>
-| PCB Component                  |    Board    | Quantity | Unit Price ($) | Total ($)    |
-|--------------------------------|-------------|----------|----------------|--------------|
-| **PCB Manufacturing (JLCPCB)** |   Main      |    5     | **1.3**        | **6.5**      |
-|                                |   IMU       |    5     |  **6.644**     | **33.22**    |
-| **PCB Assembly (JLCPCB)**      |   Main      |    5     |   **0.82**     | **4.10**     |
-|                                |   IMU       |    5     |   **21.826**   | **109.13**   |
-| **TOTAL PCB COST**             |    ALL       |   5*2=10 | **30.59**      | **152.95**   |
-
----
-
-### **🖨️ 3D Printing Cost Breakdown** <a id="3d-printing-cost"></a>
-
-For 3D Printing we used Anycubic Kobra S1 Printer, and as well for some high quality resing printing we used the 3DP service from JLC.
-
-| 3D Printed Parts                          | Quantity | Unit Price ($) | Total ($)   |
-|-------------------------------------------|----------|----------------|---------------|
-| **1000g Anycubic PLA+ filament**       | 1       | **16.99**      | **16.99**     |
-| **1000g Anycubic ABS filament**       | 1       | **21.99**      | **21.99**     |
-| **TOTAL 3D PRINTING COST**                |         |            | **38.98**     |
-
----
-
-### **🔩 Other Materials (Screws, Nuts, and Miscellaneous)** <a id="other-materials-cost"></a>
-| Material                       | Quantity | Unit Price ($) | Total ($)   |
-|--------------------------------|----------|--------------|---------------|
-| **M2/M3 Screws & Nuts**       | -      | **-**      | **10.00**       |
-| **Wiring & Connectors**        | -      | **-**      | **10.00**       |
-| **TOTAL OTHER MATERIALS COST** |        |            | **20.00**       |
-
----
-
-### **💵 TOTAL** <a id="total-cost"></a>
-| Category                      | Total Cost ($) |
-|-------------------------------|----------------|
-| **Components**                | **363.35**     |
-| **PCB (JLCPCB + Components)** | **30.59**     |
-| **3D Printing**               | **38.98**      |
-| **Other Materials**           | **20.00**       |
-| **TOTAL PROJECT COST**        | **452.92**     |
-
-**Prices are approximate, based on current market prices.*
 
 ---
 
