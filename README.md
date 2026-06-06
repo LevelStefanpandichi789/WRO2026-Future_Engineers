@@ -12,12 +12,10 @@ This repository is organized as follows:
 ```
 📦 WRO-robot
 ├── 📁 3D-models             # Contains 3D design files for the robot's components
-├── 📁 electrical-schematics # Circuit diagrams and wiring
 ├── 📁 github-commits        # Commit logs and change tracking details for this repository
 ├── 📁 media                 # Images and videos 
 │   ├── 📁 robot-photos      # Photos of the robot
 │   ├── 📁 team-photos       # Pictures of team members and teamwork
-├── 📁 other                 # Contains files that do not fit into other categories
 ├── 📁 src                   # Main source code for the robot
 └── 📄 README.md             # Main documentation for the project
 ```
@@ -154,8 +152,6 @@ The robot's mobility is controlled through **a fully PCB chassis, a servo-based 
 The drivetrain uses a custom micro-RC differential at the rear, driven by a **Pololu 30:1 HPCB micro gearmotor** through a **3D printed gear** → **differential input gear**. The motor is held in a 3D-printed support with the battery mounted above, keeping the center of mass centered and low. Rear outputs rotate in bearings seated inside a printed part that contains 4 bearings for the wheel axles, this attachment is mounted using M2 screws to the PCB chassis, minimizing friction and parts count. 
 At the front, the wheels are fully 3D-printed and each wheel runs on two bearings (inner + outer) for a rigid, wobble-free hub that steers precisely.
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/bd5e65719f69d3f668c65852b8c334ef36fecc77/other/differential.jpeg" width="800">
-
 To maximize grip on the track without adding mass, we use a **downforce impeller (10000KV BLDC motor)** that pulls air from under the robot, increasing the normal force. The impeller is PWM-controlled via an **EMAX Bullet 20A ESC**. The drive motor is controlled by an **IFX9201SG driver (PWM + DIR)** with an active brake pulse for precise stopping, while the encoder on the gearmotor provides odometry for short, accurate moves (e.g., avoidance hops, parking nudges).
 
 ### ⚙️ **Motor – 30:1 Micro Metal Pololu Gearmotor HPCB** <a id="motor"></a>
@@ -167,7 +163,6 @@ Following past testing, we selected **a high-power 30:1 Micro Metal Gearmotor (6
 | **Model:** 30:1 HPCB | **Voltage:** 6V |
 | **No-load Speed:** 1000 RPM | **No-load Current:** 120mA |
 | **Stall Torque:** ~0.45 kg·cm | **Stall Current:** 1.6A |
-| 🔗 **[Buy Here](https://www.pololu.com/product/5184)** | **Function:** Drives the robot |
 
 **Why We Chose This Motor?**  
 **- Gear ratio provides sufficient torque** without sacrificing efficiency.  
@@ -176,8 +171,6 @@ Following past testing, we selected **a high-power 30:1 Micro Metal Gearmotor (6
 ### 🛞 Wheels & Tires (Silicone) <a id="wheels"></a>
 
 Our robot uses cast silicone tires on 3D-printed hubs. Silicone provides high, repeatable static friction on painted boards and vinyl, which pairs perfectly with the rear differential and downforce impeller—more grip when we need it, without adding mass.
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/back-wheel_technical-drawing.png" width="800">
 
 **Why silicone?**
 - Grip & consistency: Strong adhesion on smooth surfaces → faster exits and shorter braking distances.
@@ -221,22 +214,16 @@ The **IFX9201SG** motor driver is used to control the robot’s high-performance
 | **Logic Voltage:** 3.3V / 5V compatible | **PWM Frequency:** Up to 20 kHz |
 | **Max Continuous Current:** 5A | **Max Peak Current:** 8A per channel |
 | **Control Interface:** PWM + Direction pins | **Built-in Protections:** Overtemperature, Overcurrent, Undervoltage, Short-to-GND/Battery |
-| 🔗 **[Buy Here](https://www.lcsc.com/product-image/C112633.html)** | **Function:** Controls drive motors |
 
 ### **⚙️ Impeller for downforce** <a id="impeller">
 
 The **impeller** generates downforce to improve the robot’s grip on the track at high speeds. Powered by a **BLDC motor**, it delivers extremely high RPM with minimal weight, making it ideal for competitive line follower and robotracer builds. Its low rotor inertia ensures instant acceleration, while the compact size allows for easy integration.
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/impeller-fan_technical-drawing.png" width="800">
-
-| <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/bd5e65719f69d3f668c65852b8c334ef36fecc77/other/impeller.jpeg" width="300"> | **Specifications** |
 |------------------------------|------------------------------|
 | **Type:** BLDC Motor | **Model:** 10000KV |
 | **Voltage:** 2–3S | **Shaft Diameter:** 1.0mm |
 | **No-Load Speed:** ~85,000 RPM @ 7.4V	 | **	Weight:** ~4.5g |
 | **Current Draw (Avg):** ~1A @ 7.4V	 | **Peak Current:** ~2.5A |
-| 🔗 **[Buy Here](https://www.aliexpress.com/item/1005010313915123.html)** | **Function:** Drives the downforce impeller |
-
 
 ---
 
@@ -252,11 +239,6 @@ The **impeller** generates downforce to improve the robot’s grip on the track 
 | **Voltage:** 2–4S | **Protections:** Shortcircuit protection & stall protection |
 | **Dimensions (LxW):** 11.9x19.6 mm	 | **Weight(W/O Wires):** ~3.5g |
 | **Burst Max Current**  : ~30A	 | **Max Current:** ~20A |
-| 🔗 **[Buy Here](https://emaxmodel.com/products/emax-d-shot-bullet-series-20a-2-4s-blheli_s-esc-3-5g-support-onshot42-multishot?_pos=5&_sid=e68307242&_ss=r)** | **Function:** Drives the downforce BLDC |
-
-
-
-
 
 ---
 
@@ -265,13 +247,7 @@ The **impeller** generates downforce to improve the robot’s grip on the track 
 
 The **steering system** is a critical part of the robot, ensuring precise maneuverability and smooth turns. Our design is based on a **parallelogram steering mechanism**, where both front wheels turn at the same angle through a single servo-controlled linkage. This setup provides predictable and stable steering, making it easy to use for an autonomous vehicle. Instead of using an **Ackermann steering system**, which requires more complex calculations and linkages, we opted for a **simpler and more lightweight solution** that offers consistent control. Our steering system allows for a maximum turning angle of 80 degrees in both the left and right directions. This range provides precise maneuverability, enabling the robot to navigate sharp turns efficiently while maintaining stability.
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/7127f1dabd068adfad747dd9a046f9f305c5eda3/other/steering.gif" width="500">
-
 Our **steering arm is directly connected to the servo**, which moves the two front wheels simultaneously. This ensures that the turning response is immediate and proportional to the servo's motion. The **wheels are mounted on special mounts hubs**, allowing for smooth and precise movement without excessive friction. To ensure **structural integrity and long-term reliability**, the steering system is **assembled using M2 screws on which the hubs can turn**. 
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/steering-and-camera-mount-hub_technical-drawing.png" width="800">
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/left-steering-hub_technical-drawing.png" width="800">
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/steering-bar_technical-drawing.png" width="800">
 
 ---
 
@@ -285,7 +261,6 @@ To control the steering system, we use an **MG90S micro servo**, known for its h
 | **Torque:** 2.2kg/cm | **Signal Type:** PWM |
 | **Current Draw (Avg):** 120mA | **Peak Current:** 500mA |
 | **Weight:** ~13.4g | **Gears:** Plastic |
-| 🔗 **[Buy Here](https://www.optimusdigital.ro/ro/motoare-servomotoare/271-servomotor-mg90s.html?srsltid=AfmBOooTrDsx2UoJ3Px8J26kkCbcuYhlpKYmuIYkivK_5ZSzPJx0ZNo8)** | **Function:** Controls steering |
 
 ---
 
@@ -311,10 +286,6 @@ Each laser sensor has an approximate field of view of 40 degrees. Because of thi
 | Rear sensor removed | Lower weight and simpler wiring | Parking becomes less reliable | Rejected |
 | Camera-only obstacle detection | Detects color and position | Distance estimation is weaker | Combined with laser sensor |
 
-You can see the placement belod:
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/c1e3c13659256ff0e7805cd652889c4b14a2ee5f/other/Sensor%20view%20angle%20diagram.png" width="800">
-
 ---
 
 ## 🏎️ **Chassis & Component Mounting** <a id="chassis"></a>
@@ -325,27 +296,11 @@ Instead of using a fully 3D-printed frame, we chose a PCB chassis because it giv
 
 The mechanical parts are mounted directly onto the PCB using M2 screws, nuts, and small 3D-printed supports. Each printed part was designed to match the exact position of the robot components, so the drivetrain, steering system, battery, impeller, and sensors stay fixed during high-speed runs. The drive motor is mounted in a 3D-printed support at the rear of the robot. It transfers motion to the rear differential through a small gear system. The rear axle assembly is supported with bearings to reduce friction and improve stability. This setup allows the rear wheels to rotate smoothly while keeping the drivetrain compact. The steering system is placed at the front of the robot. The MG90S servo is mounted securely on a 3D printed mount that also holds the camera, and its arm controls both front wheels through a parallelogram steering linkage. The front hubs rotate on M2 screws and bearings, allowing the wheels to steer with low friction and good precision.
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/motor-and-wheel-hub(main-drive-hub)_technical-drawing.png" width="800">
-
 The battery is mounted close to the center of the robot to keep the center of mass balanced. This helps the robot stay stable when accelerating, braking, or turning. The OpenMV camera is mounted at the front side of the robot via same 3D printed mounting parts used for the steering servo, positioned to clearly detect colored cubes, walls, and track markings. Distance sensors are placed around the robot to assist with wall detection, parking, and starting direction.
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5bc63707b6ec19c1477c26fbc46637d6a6cd95f3/technical-draws/battery-support_technical-drawing.png" width="800">
 
 The impeller is mounted in the central area of the chassis so it can pull air from under the robot and generate downforce evenly. This improves grip without adding extra weight, which is important for maintaining speed and control during the run. 
 
 Overall, the chassis and mounting system were designed to be lightweight, rigid, compact, and easy to maintain. Every component has a fixed position, making the robot more reliable during repeated tests and competition runs.
-
----
-
-## 🔧 Assembly Process <a id="assembly-process"></a>
-
-🔗 **[Click here to watch the assembly video on YouTube](https://youtu.be/HSzWATB6nWQ)** <a id="assembly-process-video"></a>
-
-The assembly process was planned so that every subsystem could be mounted and tested step by step. This helped us avoid wiring problems, mechanical misalignment, and difficult debugging later in the build.
-
----
-
-### 2: Assemble the Chassis & Components <a id="assembly"></a>
 
 #### 🔧 **Main Assembly Steps**
 
@@ -353,15 +308,11 @@ The assembly process was planned so that every subsystem could be mounted and te
 
 The first step is to inspect the custom PCB chassis and make sure all soldered components, connectors, and mounting holes are clean and correctly placed. Before installing mechanical parts, we check the power rails, continuity, and main connector pins to make sure there are no shorts or soldering problems.
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/269517e2b03fbb4d234447eee71b66cd3d73db59/other/prepare.png" width="500">
-
 **2. Mount the Rear Drivetrain**
 
 The rear drivetrain is assembled by installing the Pololu 30:1 HPCB gearmotor into its 3D-printed motor support. The motor gear is aligned with the differential input gear, making sure the gears mesh smoothly without too much pressure or backlash.
 
 After that, the rear differential and axle support are mounted to the PCB chassis using M2 screws. Bearings are inserted into the rear support to reduce friction and keep the wheel axles stable during movement.
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/269517e2b03fbb4d234447eee71b66cd3d73db59/other/drivetrain.png" width="500">
 
 **3. Install the Rear Wheels**
 
@@ -372,8 +323,6 @@ The rear wheels are mounted onto the differential outputs. Each wheel is checked
 The front steering hubs are mounted onto the chassis using M2 screws and bearings. The front wheels are then installed on the hubs and checked for smooth rotation.
 
 The MG90S servo is mounted in its fixed position on the chassis 3D printet part. The steering linkage is connected between the servo arm and both front hubs. Before final tightening, the servo is centered in software, then the wheels are aligned straight. This ensures that the robot drives forward correctly when the servo is at its center position.
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/269517e2b03fbb4d234447eee71b66cd3d73db59/other/prepare.png" width="500">
 
 **5. Mount the Battery Holder**
 
@@ -394,8 +343,6 @@ The Pololu PWM distance sensors are mounted around the robot according to their 
 
 Each sensor is mounted via a soldered 3 pin header, so it won't be affected by any vibrations.
 
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/269517e2b03fbb4d234447eee71b66cd3d73db59/other/tof.png" width="500">
-
 **9. Connect Electronics**
 
 After all mechanical parts are mounted, the electronic connections are completed. This includes the motor, encoder, servo, impeller control, OpenMV UART lines, IMU, distance sensors, and battery input. Before powering the full system, we verify polarity and check that the 5V regulator output is stable.
@@ -410,10 +357,6 @@ The first firmware test checks each subsystem separately:
 - Distance sensor readings
 - IMU data
 - OpenMV UART communication
-
-Testing each part separately makes debugging easier and prevents one faulty subsystem from affecting the whole robot.
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/269517e2b03fbb4d234447eee71b66cd3d73db59/other/final.png" width="500">
 
 **11. Final Mechanical Check**
 
@@ -441,7 +384,6 @@ The **Li-Po battery** provides a **compact, lightweight, and high-discharge** po
 | **Voltage:** 7.4V | **Discharge Rate:** 60C |
 | **Weight:** 12g | **Size:** 13.8 x 12 x 52.5mm |
 | **Output Current:** Varies by load | **Connector Type:** JST |
-| 🔗 **[Buy Here](https://www.gaoneng.shop/products/gaoneng-gnb-lihv-2s-7.6v-300mah-60c-jst-lipo-battery)** | **Function:** Powers the entire robot |
 
 
 ---
@@ -456,7 +398,6 @@ The **Arduino Nano ESP32** provides **high-speed processing, built-in Wi-Fi and 
 | **SRAM:** 520KB | **Frequency:** 240MHz |
 | **Pins:** 22 | **Input Voltage:** 5V |
 | **Current Draw (Avg):** 200mA | **Peak Current:** 500mA |
-| 🔗 **[Buy Here](https://store.arduino.cc/en-ro/products/nano-esp32)** | **Function:** Controls all robot components |
 
 ---
 
@@ -469,7 +410,6 @@ The **Custom BMI088 IMU** is used to **measure the robot's angular velocity and 
 | **Gyroscope Range:** ±2000°/s | **Accelerometer Range:** ±24g |
 | **Interface:** I2C | **Supply Voltage:** 3.0V – 3.6V |
 | **Current Draw:** ~3.2mA | **Weight:** ~1g |
-| 🔗 [View Open Source Project Here](https://oshwlab.com/bicicleta11/bmi088-gyro-module) | **Function:** Tracks orientation & motion |
 
 ---
 
@@ -484,7 +424,6 @@ The **OpenMV Cam RT1062** handles **traffic sign recognition, lane detection, co
 | **Camera Sensor:** OV5640 | **Resolution:** 2592 × 1944, 5 MP |
 | **Typical Vision Speed:** ~40 FPS at QVGA | **Interfaces:** UART, I2C, SPI, CAN, USB-C |
 | **Connectivity:** Wi-Fi, Bluetooth 5.1, Ethernet | **I/O Voltage:** 3.3 V only |
-| 🔗 **[Buy Here](https://openmv.io/collections/cameras/products/openmv-cam-rt?variant=42269003743326)** | **Function:** Detects traffic signs, lanes, and visual markers |
 
 ---
 
@@ -961,11 +900,6 @@ static inline float pulseToMM(unsigned long pw_us) {
   return mm;
 }
 ```
-
-Below you can see where the laser sensors and camera view fields are:
-
-<img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/a3925a1f324463df2765be79d80c314f38acec86/other/Sensor%20view%20angle%20diagram.png" width="500">
-
 
 ### 📷 Camera <a id="camera-coding"></a>
 
