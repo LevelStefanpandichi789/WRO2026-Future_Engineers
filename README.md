@@ -17,12 +17,8 @@ This repository is organized as follows:
 ├── 📁 media                 # Images and videos 
 │   ├── 📁 robot-photos      # Photos of the robot
 │   ├── 📁 team-photos       # Pictures of team members and teamwork
-│   └── 📁 video             # Recorded testing
 ├── 📁 other                 # Contains files that do not fit into other categories
 ├── 📁 src                   # Main source code for the robot
-├── 📁 technical-draws       # Technical drawings and mechanical blueprints
-├── 📁 video                 # Videos of our robot
-├── 📄 LICENSE               # MIT License for the project
 └── 📄 README.md             # Main documentation for the project
 ```
 
@@ -40,12 +36,12 @@ Hi! I’m Stefan from Romania, and this is my first WRO season. I am passionate 
 
 ---
 
-### **Horia Simion** 
+### **Olteanu Horatiu** 
 **Age:** 17 <br>
 **High School:** National College "Mihai Viteazul" (CNMV)
 
 **Description:**  
-Hi! I’m Horia from Romania, and this is my third WRO season competing alongside Andrei. I have participated in RoboMission multiple times, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
+Hi! I’m Horatuy from Romania, and this is my first WRO season competing alongside Stefan. I have participated in multiple robotic olympiads such as ONCS and InfoEduc, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
 
 ---
 
@@ -72,26 +68,11 @@ Scoring is based on **accuracy, technical documentation and speed**, rewarding t
 
 ---
 
-## 🤖 Our Robot <a id="our-robot"></a>
-| <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5f4072d596f9771e1168e6d9f6c43632f88357e8/media/robot-photos/top.png" width="300">         | <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5f4072d596f9771e1168e6d9f6c43632f88357e8/media/robot-photos/bottom.png" width="300">            |
-|----------------------------------|-------------------------------------|
-| <p align="center"><b>Top</b></p> | <p align="center"><b>Bottom</b></p> |
-
-| <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5f4072d596f9771e1168e6d9f6c43632f88357e8/media/robot-photos/left.png" width="300">          | <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5f4072d596f9771e1168e6d9f6c43632f88357e8/media/robot-photos/right.png" width="300">           |
-|-----------------------------------|------------------------------------|
-| <p align="center"><b>Left</b></p> | <p align="center"><b>Right</b></p> |
-
-| <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5f4072d596f9771e1168e6d9f6c43632f88357e8/media/robot-photos/front.png" width="300">           | <img src="https://github.com/andreipopescufilimon/WRO2026_Future_Engineers/blob/5f4072d596f9771e1168e6d9f6c43632f88357e8/media/robot-photos/back.png" width="300">          |
-|------------------------------------|-----------------------------------|
-| <p align="center"><b>Front</b></p> | <p align="center"><b>Back</b></p> |
-
-
 Robot Specifications:
 Required Parts|
 -Required Parts
-・Raspberry Pi 5
-・Arduino nano
-・HC-05
+・Arduino UNO
+・HC-07
 ・TTmotor(3~6V)
 ・wheel × 4
 ・L298N
@@ -99,25 +80,6 @@ Required Parts|
 ・9Vbattery
 
 The robot was designed to prioritize stability, fast steering response, and compact packaging. A lightweight PCB chassis combined with silicone tires and an active downforce system allows the robot to maintain traction and consistency during high-speed autonomous runs.
-
----
-
-## 📊 Performance Metrics <a id="performance-metrics"></a>
-
-The robot was tested extensively on full-scale WRO-inspired tracks to evaluate stability, obstacle handling, and parking consistency. Multiple runs were performed under different lighting conditions and track layouts to validate reliability and repeatability.
-
-| Metric | Result |
-|---|---:|
-| Maximum stable speed | 3 m/s |
-| Average lap time | 11-12 s |
-| Parking success rate | 90% |
-| Obstacle avoidance success rate | 95% |
-| Average steering correction delay | <10 ms |
-| Camera processing speed | ~40 FPS |
-| Maximum steering angle | 85° |
-| Full system peak current | ~7 A |
-
-The final tuning focused on balancing speed and stability rather than maximizing raw speed alone. Particular attention was given to repeatable obstacle avoidance and consistent parking performance.
 
 ---
 
@@ -1665,92 +1627,3 @@ Stop Inside Parking
 
 
 ---
-
-### ⚠️ Edge Cases and Failure Handling <a id="edge-cases"></a>
-
-During testing, several failure cases were identified and handled in software. These protections make the robot more reliable because the program does not depend on every sensor reading being perfect.
-
-| Failure Case | Possible Cause | Software Response |
-|---|---|---|
-| Cube temporarily lost from camera view | Motion blur, lighting, cube outside ROI | Return from FOLLOW_CUBE to PID after timeout |
-| Repeated black line detection | Camera sees the same turn marker multiple times | Cooldown timer prevents repeated 90° turns |
-| Wrong color detection | Reflections or lighting variation | LAB threshold tuning and ROI filtering |
-| Robot drifts after avoidance | Uneven floor, steering error, gyro drift | AFTER_CUBE state re-aligns heading before normal PID |
-| Parking zone not detected immediately | Camera angle, sensors angle or object position | Continue searching after completing required laps |
-| Sudden voltage drop | Impeller or servo current spike | Impeller ramp-up and separated power strategy |
-
----
-
-## 📽️ Performance Video <a id="performance-video"></a>
-
-🔗 **[Click here to watch the video on YouTube](https://youtu.be/54tYACWeeq0)** 
-
----
-
-## 🔁 Reproducibility Guide <a id="reproductibility-guide"></a>
-
-Another team or person should be able to rebuild the robot by following the files and documentation in this repository.
-
-### 1. Mechanical Build
-1. Print the parts from the `3D-models` folder.
-2. Use the technical drawings from `technical-draws` to check dimensions and orientation.
-3. Assemble the rear drivetrain, differential, motor mount, and wheel hubs.
-4. Mount the steering servo and front steering hubs.
-5. Install the silicone tires on the wheels.
-6. Mount the impeller and make sure the airflow path is not blocked.
-
-### 2. Electronics Assembly
-1. Use the wiring files from `electrical-schematics`.
-2. Connect the Arduino Nano ESP32, OpenMV camera, motor driver, servo, IMU, distance sensors, and voltage regulator.
-3. Check power polarity before connecting the Li-Po battery.
-4. Test the regulated voltage before connecting sensitive components.
-5. Confirm UART communication between the OpenMV camera and Arduino.
-
-### 3. Software Upload
-1. Upload the Arduino code from the `src` folder to the Arduino Nano ESP32.
-2. Upload the OpenMV Python script to the OpenMV RT1062 camera.
-3. Open serial debug during first tests to verify sensor messages.
-4. Calibrate camera thresholds for the current lighting.
-5. Reset IMU heading before the first autonomous run.
-
-### 4. First Test Run
-1. Test steering center without driving.
-2. Test drive motor direction and braking.
-3. Test camera detection for orange, blue, red, green, black, and magenta.
-4. Test gyro-based 90° turns.
-5. Test cube following and avoidance at low speed.
-6. Test parking only after lane following and obstacle logic are stable.
-
----
-
-## 📂 Resources <a id="resources"></a>
-
-Below is a compact list of **external images** used in this repository.
-
-| Category | Resources |
-|---|---|
-| Social Badges | [Website](https://img.shields.io/badge/Website-000?style=for-the-badge&logo=google-chrome&logoColor=white), [YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white), [Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white), [X](https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white), [Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white), [GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white), [OSHWLab](https://img.shields.io/badge/OSHWLab-0A7DFF?style=for-the-badge&logo=opensourcehardware&logoColor=white) |
-| Sponsor Logos | [OpenMV](https://hyperlinerobotics.com/assets/images/sponsors/openmv.avif), [EasyEDA](https://hyperlinerobotics.com/assets/images/sponsors/EasyEDA_logo.png), [OSHWLab](https://hyperlinerobotics.com/assets/images/sponsors/OSHWLab.png), [LCSC](https://static.lcsc.com/feassets/pc/images/headIcons/logo-s.png), [ING](https://hyperlinerobotics.com/assets/images/sponsors/ING.png), [Fundația Comunitară București](https://hyperlinerobotics.com/assets/images/sponsors/FundatiaComunitaraBucuresti.png), [SoBotz](https://hyperlinerobotics.com/assets/images/sponsors/SoBotz-white.png), [JSumo](https://jsumo.com/Data/EditorFiles/jsumo-robot-parts-logo.png), [Evergreen](https://hyperlinerobotics.com/assets/images/sponsors/evergreen.png), [FAE Drones](https://fae-drones.com/wp-content/uploads/2022/08/logo-vertical-ro.png) |
-| Robot Parts | [Pololu Gearmotor](https://a.pololu-files.com/picture/0J12418.220.jpg?8f026fe1675b1109ea574290d3d26081), [IFX9201SG Driver](https://assets.lcsc.com/images/lcsc/900x900/20230316_Infineon-Technologies-IFX9201SG_C112633_front.jpg), [MG90S Servo](https://static.optimusdigital.ro/20565-large_default/mg90s-servomotor.jpg), [Li-Po Battery](https://img-va.myshopline.com/image/store/2000408386/1640672930478/GNB3002S60AHV-(4)_1800x.jpeg?w=1000&h=1000), [Arduino Nano ESP32](https://store.arduino.cc/cdn/shop/files/ABX00092_01.iso_804x603.jpg?v=1727101612), [OpenMV RT1062](https://openmv.io/cdn/shop/files/cam-v5-front-hero-2-web_1000x.jpg?v=1699323324), [Pololu Distance Sensor](https://a.pololu-files.com/picture/0J11135.1200.jpg?1910ced553e34153046a4c95021a93b3), [Voltage Regulator](https://gomagcdn.ro/domains/robofun.ro/files/product/large/pololu-5v-5a-step-down-voltage-regulator-d24v50f5-633511-832-442353.jpg) |
-
-**Note:** All external images are credited to their original owners and are used only for documentation and component reference purposes.
-
----
-
-## 📜 License <a id="license"></a>
-```
-License – All Rights Reserved
-
-Copyright (c) 2026 **Popescu Filimon Andrei Cosmin**
-All rights reserved.
-
-This software and all associated files are the exclusive property of the copyright holder.
-
-* You **may not copy, modify, merge, publish, distribute, sublicense, or sell** any part of this software without prior written permission.
-* The software may only be viewed from this repository for personal and educational reference purposes.
-* Any unauthorized use, reproduction, or distribution is prohibited and subject to legal action.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
-```
-
-
