@@ -39,7 +39,7 @@ Hi! I’m Stefan from Romania, and this is my first WRO season. I am passionate 
 **High School:** National College "Mihai Viteazul" (CNMV)
 
 **Description:**  
-Hi! I’m Horatuy from Romania, and this is my first WRO season competing alongside Stefan. I have participated in multiple robotic olympiads such as ONCS and InfoEduc, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
+Hi! I’m Horatiu from Romania, and this is my first WRO season competing alongside Stefan. I have participated in multiple robotic olympiads such as ONCS and InfoEduc, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
 
 ---
 
