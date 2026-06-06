@@ -16,7 +16,6 @@ This repository is organized as follows:
 ├── 📁 media                 # Images and videos 
 │   ├── 📁 robot-photos      # Photos of the robot
 │   ├── 📁 team-photos       # Pictures of team members and teamwork
-├── 📁 src                   # Main source code for the robot
 └── 📄 README.md             # Main documentation for the project
 ```
 
