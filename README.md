@@ -35,7 +35,7 @@ Hi! I’m Stefan from Romania, and this is my first WRO season. I am passionate 
 
 ### **Olteanu Horatiu** 
 **Age:** 17 <br>
-**High School:** National College "Mihai Viteazul" (CNMV)
+**High School:** National College "Mihai Eminescu" (CNME)
 
 **Description:**  
 Hi! I’m Horatiu from Romania, and this is my first WRO season competing alongside Stefan. I have participated in multiple robotic olympiads such as ONCS and InfoEduc, gaining valuable experience in solving various problems that may arise while building a robot. I have a strong interest in technology and robotics and am always eager to learn and experiment with new ideas.
