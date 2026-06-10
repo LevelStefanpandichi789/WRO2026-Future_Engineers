@@ -1,8 +1,8 @@
-# HyperLine Robotics – WRO 2026 Future Engineers
+# Precision Parking – WRO 2026 Future Engineers
 
 ## Team Introduction
 
-HyperLine Robotics is a Romanian team competing in the World Robot Olympiad 2026, Future Engineers category.
+Precision Parking is a Romanian team competing in the World Robot Olympiad 2026, Future Engineers category.
 
 The team consists of:
 
