@@ -2,67 +2,75 @@
 
 ## Team Introduction
 
-Precision Parking is a Romanian team competing in the World Robot Olympiad 2026, Future Engineers category.
+Precision Parking is a Romanian team participating in the World Robot Olympiad 2026 in the Future Engineers category.
 
-The team consists of:
+The team consists of two members:
 
 ### Stefan Pandichi
 
-Responsible for electronics development, PCB design, embedded programming and hardware integration.
+Responsible for hardware integration, electronics assembly and robot construction.
 
 ### Horatiu Olteanu
 
-Responsible for software development, testing, system validation and competition strategy.
+Responsible for software development, testing and system optimization.
 
-The objective of our project is to develop a compact autonomous vehicle capable of completing all WRO Future Engineers tasks reliably and consistently. Throughout development, our focus was not only achieving high speed, but also ensuring repeatable performance under different track layouts and obstacle configurations.
+The purpose of this project is to design and build an autonomous vehicle capable of completing the WRO Future Engineers challenges while maintaining reliability and consistent performance.
 
 ---
 
 # Project Overview
 
-The WRO Future Engineers challenge requires teams to design and build a fully autonomous vehicle capable of navigating a randomized track without human intervention.
+The WRO Future Engineers challenge requires teams to create a fully autonomous vehicle capable of navigating a competition field without human intervention.
 
-The competition consists of two main stages.
+The vehicle must:
 
-### Open Challenge
+* drive autonomously around the track;
+* identify visual elements on the field;
+* react to traffic signs and obstacles;
+* complete multiple laps;
+* perform a parking maneuver at the end of the run.
 
-The robot must complete multiple laps while identifying the driving direction and performing accurate turns around the field.
+Our robot was designed with a strong focus on simplicity, reliability and ease of maintenance.
 
-### Obstacle Challenge
-
-The robot must detect colored traffic signs and determine on which side the obstacle should be passed. After completing the required laps, the robot must locate the parking zone and perform an autonomous parallel parking maneuver.
-
-To solve these tasks, our robot combines:
-
-* computer vision;
-* inertial navigation;
-* distance sensing;
-* closed-loop steering control;
-* autonomous decision-making.
-
-The entire system was designed around reliability and repeatability rather than maximum speed.
+Instead of using a large number of sensors and complex hardware, we aimed to achieve the required functionality using a compact architecture built around computer vision and basic motion control.
 
 ---
 
 # Design Philosophy
 
-During development we established several key objectives:
+During development we focused on several important objectives.
 
-### Reliability
+## Reliability
 
-The robot should complete the course consistently even if lighting conditions, obstacle positions or track layouts vary.
+The robot should complete its tasks consistently during repeated runs.
 
-### Simplicity
+## Simplicity
 
-Every subsystem should be as simple as possible while still achieving the required performance.
+The mechanical and electronic systems should remain simple enough to be easy to debug and repair.
 
-### Maintainability
+## Modularity
 
-Hardware and software should be easy to modify, debug and repair between test sessions.
+Hardware and software components should be separated into independent subsystems.
 
-### Modularity
+## Repeatability
 
-Vision, navigation and motion control are separated into independent modules to simplify testing and troubleshooting.
+The robot should behave predictably and produce similar results under similar conditions.
+
+---
+
+# Hardware Components
+
+The robot uses a compact hardware architecture built around commonly available educational robotics components.
+
+| Component    | Function           |
+| ------------ | ------------------ |
+| Arduino UNO  | Main controller    |
+| HuskyLens    | Vision processing  |
+| L298N        | Motor driver       |
+| Servo Motor  | Steering control   |
+| DC Motor     | Vehicle propulsion |
+| 4 Wheels     | Mobility system    |
+| Battery Pack | Power supply       |
 
 ---
 
@@ -70,335 +78,210 @@ Vision, navigation and motion control are separated into independent modules to 
 
 ## Chassis
 
-The robot is built around a custom PCB chassis.
+The robot is built on a lightweight chassis designed to support all electronic and mechanical components while maintaining stability during movement.
 
-Instead of using a conventional frame and separate electronics board, the PCB serves both as the mechanical structure and electrical backbone of the robot.
+Special attention was given to component placement in order to achieve balanced weight distribution.
 
-This approach provides several advantages:
-
-* reduced wiring;
-* lower weight;
-* improved rigidity;
-* compact packaging;
-* easier assembly.
-
-The chassis also simplifies maintenance because sensors, power electronics and connectors are integrated directly into the structure.
+The battery was positioned near the center of the robot to reduce instability during turns.
 
 ---
 
-## Drivetrain
+## Drive System
 
-The robot uses a rear-wheel-drive configuration.
+Movement is provided by a DC motor connected to the drive wheels through a simple transmission system.
 
-Power is provided by a Pololu 30:1 HPCB gearmotor connected to a miniature differential system.
+The drivetrain was designed to provide enough torque for reliable movement while maintaining a reasonable driving speed.
 
-The differential allows both rear wheels to rotate at different speeds during cornering, reducing tire scrub and improving stability.
-
-After testing several motor options, we selected the 30:1 gearbox because it offered the best compromise between:
-
-* acceleration;
-* top speed;
-* parking precision;
-* obstacle handling.
-
-A faster motor reduced low-speed control, while slower options significantly increased lap times.
+The motor is controlled through an L298N motor driver connected directly to the Arduino UNO.
 
 ---
 
 ## Steering System
 
-Steering is performed using an MG90S servo motor connected to a parallel steering linkage.
+Steering is performed using a servo motor mounted at the front of the vehicle.
 
-We deliberately chose a parallel steering configuration instead of Ackermann steering because:
+The servo allows precise wheel positioning and enables the robot to navigate corners and avoid obstacles.
 
-* it is mechanically simpler;
-* it requires fewer components;
-* it is easier to calibrate;
-* it produces predictable steering behavior.
-
-Although Ackermann steering can improve cornering efficiency, our testing showed that the additional complexity was not justified for the competition environment.
-
----
-
-## Downforce System
-
-To increase traction without increasing mass, the robot uses an active downforce system.
-
-A high-speed BLDC motor drives an impeller located in the center of the chassis. The impeller generates negative pressure underneath the robot, increasing the normal force applied to the driving wheels.
-
-This solution improved:
-
-* cornering stability;
-* acceleration;
-* braking consistency.
-
-The impeller is activated throughout the run and controlled through an electronic speed controller connected to the main controller.
+Multiple steering angles were tested during development to find a balance between maneuverability and stability.
 
 ---
 
 # Electronics Architecture
 
-The robot uses a distributed architecture consisting of two processing systems.
+The robot uses a centralized control architecture.
 
-## Main Controller
+The Arduino UNO acts as the main controller and coordinates all subsystems.
 
-An Arduino Nano ESP32 handles:
+```text
+HuskyLens
+    │
+    ▼
+Arduino UNO
+    │
+ ┌──┴──┐
+ ▼     ▼
+Servo L298N
+          │
+          ▼
+      DC Motor
+```
 
-* motion control;
-* steering;
-* sensor processing;
-* state management;
-* parking logic.
-
-The ESP32 was selected because it provides sufficient processing power while maintaining low power consumption and a compact form factor.
-
----
-
-## Vision Processor
-
-Visual processing is performed by an OpenMV RT1062 camera.
-
-The camera independently performs:
-
-* obstacle detection;
-* wall detection;
-* color recognition;
-* course direction recognition.
-
-Instead of sending complete image data, the camera transmits only processed information to the ESP32 through UART communication.
-
-This greatly reduces computational load on the main controller.
+The Arduino receives information from the HuskyLens camera and uses this information to generate movement commands.
 
 ---
 
-## Inertial Measurement Unit
+# Vision System
 
-A BMI088 IMU provides angular velocity and acceleration measurements.
+The HuskyLens is responsible for visual recognition tasks.
 
-The gyroscope is used primarily for heading estimation.
+The camera can detect and track objects, colors and visual markers placed on the field.
 
-Because camera detections can occasionally be delayed or affected by lighting conditions, the IMU acts as the primary navigation reference during driving.
+Using its onboard image processing capabilities, the HuskyLens reduces the amount of processing required from the Arduino UNO.
 
----
+Instead of analyzing images directly, the Arduino only receives processed information from the camera.
 
-## Distance Sensors
-
-Multiple distance sensors are positioned around the robot.
-
-Their functions include:
-
-* wall detection;
-* lane positioning;
-* parking alignment;
-* direction determination at startup.
-
-The combination of vision and distance sensing provides greater reliability than relying on a single sensing method.
+This approach simplifies software development and improves system responsiveness.
 
 ---
 
 # Software Architecture
 
-The software is divided into two major subsystems.
+The software running on the Arduino UNO is organized into multiple logical modules.
 
-## Vision System
+These modules are responsible for:
 
-The OpenMV camera continuously analyzes incoming frames and searches for:
-
-* colored traffic signs;
-* directional markers;
-* walls;
-* parking references.
-
-The camera processes images using color thresholding and region-of-interest filtering.
-
-Only important information is transmitted to the ESP32, reducing communication bandwidth and processing requirements.
-
----
-
-# Hardware Components
-
-The robot is built using a simple and compact hardware architecture designed to provide reliable autonomous operation while remaining easy to maintain and debug.
-
-| Component | Function |
-|------------|------------|
-| Arduino UNO | Main controller responsible for motor control, sensor processing and navigation logic |
-| HuskyLens | Computer vision system used for object and color recognition |
-| ESP8266 (ESP-01/ESP-12 module) | Wireless communication and debugging interface |
-| Servo Motor | Controls the steering angle of the front wheels |
-| DC Motor | Provides propulsion for the robot |
-| L298N Motor Driver | Controls the drive motor speed and direction |
-| 4 Wheels | Ensure stable movement and traction on the competition field |
-| Battery Pack | Supplies power to the entire robot |
-
----
-
-## Controller
-
-The Arduino UNO acts as the central processing unit of the robot. It receives information from the sensors and executes the navigation algorithms required for the challenge.
-
-## Vision System
-
-The HuskyLens camera is responsible for detecting colored objects and relevant field elements. Using onboard image processing, it provides simplified information to the Arduino, reducing computational requirements.
-
-## Steering System
-
-The steering mechanism is controlled by a servo motor connected to the front wheels. This allows the robot to perform accurate turns and maneuver through the course.
-
-## Wireless Communication
-
-An ESP8266 module is used for wireless communication and debugging during development. This allows quick monitoring of robot behavior and simplifies software testing.
-
-## Drive System
-
-The robot uses a DC motor connected to the rear axle through a motor driver. The four-wheel configuration provides stability and predictable handling during autonomous operation.
-
-## Motion Control
-
-The ESP32 executes all vehicle control functions.
-
-Its responsibilities include:
-
-* steering control;
-* speed control;
+* receiving data from the HuskyLens;
+* controlling motor speed;
+* controlling steering angle;
 * obstacle handling;
-* parking execution;
-* state transitions.
+* parking execution.
 
-Motion stability is achieved through a gyroscope-based PD controller.
-
-The controller continuously compares the desired heading with the measured heading and generates steering corrections.
-
-This approach proved significantly more reliable than encoder-only navigation.
+Separating functionality into independent modules simplified testing and debugging.
 
 ---
 
 # State Machine
 
-The robot operates as a finite state machine.
+The robot operates using a finite state machine.
 
-Each state is responsible for a specific task.
+Each state represents a specific behavior.
 
-| State   | Description                  |
-| ------- | ---------------------------- |
-| WAIT    | Waiting for start signal     |
-| DRIVE   | Normal autonomous navigation |
-| FOLLOW  | Tracking a detected obstacle |
-| AVOID   | Executing avoidance maneuver |
-| RECOVER | Returning to driving path    |
-| PARK    | Parallel parking procedure   |
-| STOP    | End of run                   |
+| State  | Function                |
+| ------ | ----------------------- |
+| WAIT   | Waiting for start       |
+| DRIVE  | Normal navigation       |
+| DETECT | Visual object detection |
+| AVOID  | Obstacle avoidance      |
+| PARK   | Parking procedure       |
+| STOP   | End of run              |
 
-Using a state machine prevents different behaviors from interfering with each other and simplifies debugging.
+Using a state machine prevents conflicts between different behaviors and improves software reliability.
 
 ---
 
 # Navigation Strategy
 
-## Open Challenge
+## Normal Driving
 
-During the Open Challenge, the robot follows a predefined driving strategy based on heading control.
+During normal operation, the robot continuously moves forward while monitoring information received from the HuskyLens.
 
-The camera determines the course direction by detecting colored markers placed on the field.
-
-Once the direction is known, the robot maintains its heading using the gyroscope and performs 90-degree turns when required.
-
-The primary objective is consistent lap completion with minimal heading drift.
+Based on the detected visual elements, the robot adjusts its steering angle and maintains its trajectory.
 
 ---
 
-## Obstacle Challenge
+## Obstacle Handling
 
-The obstacle challenge extends the open challenge algorithm by adding traffic sign detection.
+When the HuskyLens detects a relevant obstacle or traffic sign, the robot performs a predefined avoidance maneuver.
 
-The camera identifies red and green signs and determines the relative position of each obstacle.
+The maneuver consists of:
 
-The robot then performs the following sequence:
+1. Detecting the obstacle.
+2. Determining the required direction.
+3. Adjusting steering.
+4. Passing the obstacle.
+5. Returning to the original path.
 
-1. Detect obstacle.
-2. Track obstacle position.
-3. Determine avoidance side.
-4. Execute avoidance maneuver.
-5. Return to nominal trajectory.
-
-This approach allows the robot to react dynamically to randomized obstacle placement.
+This process allows the robot to react autonomously during the challenge.
 
 ---
 
 # Parking Strategy
 
-After completing the required laps, the robot enters parking mode.
+At the end of the run, the robot enters parking mode.
 
-Parking is performed using:
+The parking procedure consists of:
 
-* gyroscope heading;
-* front distance sensor;
-* rear distance sensor.
-
-The procedure consists of:
-
-1. Aligning with the parking lane.
-2. Moving to a predefined staging position.
-3. Executing a controlled parking maneuver.
-4. Correcting final position.
+1. Detecting the parking area.
+2. Aligning the vehicle.
+3. Adjusting steering angle.
+4. Moving into the parking space.
 5. Stopping completely.
 
-Several parking strategies were tested during development before selecting the final implementation.
+Several parking approaches were tested before selecting the final solution.
+
+The final implementation prioritizes reliability over speed.
 
 ---
 
 # Testing and Development
 
-Testing played a critical role throughout the project.
+Testing was an essential part of the development process.
 
-Every major mechanical and software modification was validated through repeated track testing.
+Each modification was validated through multiple trial runs.
 
-## Key Problems Encountered
+The main testing objectives were:
 
-| Problem                         | Cause                     | Solution                   |
-| ------------------------------- | ------------------------- | -------------------------- |
-| Steering oscillation            | Excessive controller gain | Controller retuning        |
-| Inconsistent obstacle detection | Variable lighting         | Improved camera thresholds |
-| Wide corner exits               | Excessive speed           | Corner speed reduction     |
-| Parking inaccuracies            | Sensor noise              | Filtering and calibration  |
-| Direction detection failures    | Marker visibility         | Updated camera ROI         |
+* steering accuracy;
+* obstacle detection;
+* driving consistency;
+* parking precision;
+* overall reliability.
 
 ---
 
-## Iterative Development
+## Main Problems Encountered
 
-The robot evolved through multiple revisions.
+| Problem                       | Solution                       |
+| ----------------------------- | ------------------------------ |
+| Unstable steering             | Servo recalibration            |
+| Inconsistent object detection | HuskyLens parameter adjustment |
+| Wide turns                    | Reduced vehicle speed          |
+| Parking errors                | Improved parking sequence      |
+| Mechanical vibration          | Chassis reinforcement          |
+
+---
+
+# Development Process
+
+The robot evolved through several development stages.
 
 ### Version 1
 
-Focused on basic driving functionality and mechanical validation.
+Basic mechanical platform with manual control testing.
 
 ### Version 2
 
-Improved sensor placement and parking consistency.
+Integration of HuskyLens and autonomous navigation.
 
 ### Version 3
 
-Introduced obstacle handling improvements and refined software architecture.
+Improved obstacle handling and parking performance.
 
-Each revision improved reliability and reduced failure rates during complete runs.
+Each version introduced improvements based on practical testing results.
 
 ---
 
 # Engineering Decisions
 
-Several important design decisions shaped the final robot.
+| Decision          | Reason                                         |
+| ----------------- | ---------------------------------------------- |
+| Arduino UNO       | Simple and reliable controller                 |
+| HuskyLens         | Easy integration and onboard vision processing |
+| L298N Driver      | Reliable motor control                         |
+| Servo Steering    | Accurate directional control                   |
+| Four-Wheel Layout | Stable movement platform                       |
 
-| Decision                | Reason                            |
-| ----------------------- | --------------------------------- |
-| PCB chassis             | Compact and lightweight structure |
-| OpenMV vision           | Fast image processing             |
-| ESP32 controller        | High performance and flexibility  |
-| Differential drivetrain | Improved cornering behavior       |
-| IMU-based navigation    | Stable heading estimation         |
-| Parallel steering       | Simpler implementation            |
-| Active downforce        | Increased traction                |
-
-These choices were based on testing rather than theoretical performance alone.
+These decisions helped keep the robot simple while meeting competition requirements.
 
 ---
 
@@ -408,7 +291,6 @@ These choices were based on testing rather than theoretical performance alone.
 WRO-robot
 │
 ├── 3D-models
-├── github-commits
 ├── media
 │   ├── robot-photos
 │   └── team-photos
@@ -416,30 +298,24 @@ WRO-robot
 └── README.md
 ```
 
-The repository documents the complete engineering process, including mechanical design, software development and testing.
-
 ---
 
 # Future Improvements
 
-Although the robot already performs all required competition tasks, several future improvements are possible.
+Potential future improvements include:
 
-Potential upgrades include:
-
-* more advanced path planning;
-* adaptive speed control;
-* sensor fusion algorithms;
-* automatic parameter tuning;
-* enhanced parking accuracy.
-
-These improvements could further increase reliability and overall performance.
+* faster obstacle recognition;
+* smoother steering control;
+* adaptive speed management;
+* improved parking precision;
+* more advanced navigation algorithms.
 
 ---
 
 # Conclusion
 
-The HyperLine Robotics project combines mechanical engineering, electronics and embedded software into a compact autonomous vehicle designed for the WRO 2026 Future Engineers competition.
+The Precision Parking project demonstrates how a compact autonomous vehicle can be developed using accessible robotics components and computer vision technologies.
 
-Throughout development, our focus remained on creating a reliable and repeatable system capable of operating under varying competition conditions.
+By combining the Arduino UNO, HuskyLens vision system and a simple mechanical platform, we created a robot capable of autonomously navigating the competition environment and completing the required tasks.
 
-The final robot successfully integrates computer vision, inertial navigation, distance sensing and autonomous decision-making into a single platform capable of completing both competition challenges.
+The project provided valuable experience in robotics, programming, electronics and engineering design while preparing for participation in the WRO 2026 Future Engineers competition.
